@@ -40,24 +40,25 @@ public class Baitap6 {
         }
 	}
 	
-//	@Test 
+	@Test 
 	public void Test01_ImplicitWait() {
 		driver.get("https://automationfc.github.io/dynamic-loading/");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//div[@id='start']")).click();
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='finish']")).getText(),"Hello World!");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='finish/h4']")).getText(),"Hello World!");
 	}
 	
-	@Test 
+//	@Test 
 	public void Test02_ExplicitWait() {
 		driver.get("https://automationfc.github.io/dynamic-loading/");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='start']")) ).click();
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='finish/h4']")).getText(),"Hello World!");
 		sleepInSeconds(5);
 		
 	}
 
-	@Test 
+//	@Test 
 	public void Test03_Iframe() {
 		driver.get("https://kyna.vn/");
 		WebElement iframeFb = driver.findElement(By.xpath("//iframe[@id='cs_chat_iframe']"));
